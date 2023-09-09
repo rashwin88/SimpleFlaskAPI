@@ -28,8 +28,15 @@ def get_user(user_id):
     if extra:
         user_data["how_is_meera"] = extra
 
-    return jsonify(user_data)
+    return jsonify(user_data), 200
 
+@app.route("/create-user", methods=["POST"])
+def create_user():
+    """
+    Sends request data back to the requester as a response.
+    """
+    data = request.get_json()
+    return jsonify(data), 201
 
 
 if __name__ == "__main__":
